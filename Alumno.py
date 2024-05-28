@@ -5,4 +5,3 @@ class Alumno:
 
     def agregarrelacion(self, relacion):
         self.relaciones.append(relacion)
-
