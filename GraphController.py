@@ -1,11 +1,21 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+from Alumno import Alumno
 from networkx.utils import pairwise
 
 
 class Graph:
-    def __init__(self):
+    def __init__(self, datos):
         self.g = nx.Graph()
+        self.datos = datos
+
+    def agregarnodos(self):
+        lista = list(self.datos.keys())
+        for key in lista:
+            self.crearnodo(key.nombre)
+            for relacion in self.datos[key]:
+                self.crearnodo(relacion[0].nombre)
+                self.relacionar(key.nombre, relacion[0].nombre, relacion[1])
 
     def crearnodo(self, nombre):
         self.g.add_node(nombre)
